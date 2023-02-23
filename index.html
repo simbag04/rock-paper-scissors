@@ -7,12 +7,25 @@
     <title>Document</title>
 </head>
 <body>
-    <script src="javascript.js"></script>
+    <script src="javascript.js" defer></script>
     <button class="selection" id="rock">Rock</button>
     <button class="selection" id="paper">Paper</button>
     <button class="selection" id="scissors">Scissors</button>
 
-    <div class="results"></div>
+    <div class="results">
+        <div>
+            Player Choice:
+            <div class="player-choice"></div>
+        </div>
+        <div>
+            Computer Choice:
+            <div class="computer-choice"></div>
+        </div>
+        
+        <div class="current-game"></div>
+        <div class="current-results"></div>
+        <div class="winner"></div>
+    </div>
     
 </body>
 </html>

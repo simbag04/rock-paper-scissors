@@ -1,3 +1,5 @@
+
+// CODE TO PLAY GAME
 function getComputerChoice()
 {
     let randNum = Math.floor(Math.random() * 3);
@@ -9,20 +11,21 @@ function getComputerChoice()
 
 function playGame(playerChoice, computerChoice)
 {
+    let output = document.querySelector(".current-game");
     playerChoice = playerChoice.toLowerCase();
     if (playerChoice === computerChoice)
     {
-        console.log("Tie!");
+        output.textContent = "Tie!";
         return "tie";
     }
     else if (playerChoice === "rock")
     {
         if (computerChoice === "paper")
         {
-            console.log("You lose! Paper beats rock");
+            output.textContent = "You lose! Paper beats rock";
             return "computer";
         }
-        else console.log("You win! Rock beats scissors");
+        else output.textContent = "You win! Rock beats scissors";
         return "player";
     }
 
@@ -30,10 +33,10 @@ function playGame(playerChoice, computerChoice)
     {
         if (computerChoice === "scissors")
         {
-            console.log("You lose! Scissors beats paper");
+            output.textContent = "You lose! Scissors beats paper";
             return "computer";
         }
-        else console.log("You win! Paper beats rock");
+        else output.textContent = "You win! Paper beats rock";
         return "player";
     }
 
@@ -41,10 +44,10 @@ function playGame(playerChoice, computerChoice)
     {
         if (computerChoice === "rock")
         {
-            console.log("You lose! Rock beats scissors");
+            output.textContent = "You lose! Rock beats scissors";
             return "computer";
         }
-        else console.log("You win! Scissors beats paper");
+        else output.textContent = "You win! Scissors beats paper";
         return "player";
     }
 }
@@ -81,4 +84,39 @@ function game()
 
 }
 
-game();
+let playerScore = 0;
+let computerScore = 0;
+
+function updateResults(winner)
+{
+    if (winner == 'player')
+    {
+        playerScore++;
+    }
+    else if (winner == 'computer')
+    {
+        computerScore++;
+    }
+    document.querySelector(".current-results").textContent = "Computer: " + computerScore + " Player: " + playerScore;
+    if (playerScore == 5)
+    {
+        document.querySelector(".winner").textContent = "You win!";
+    }
+    else if (computerScore == 5)
+    {
+        document.querySelector(".winner").textContent = "You lose!";
+    }
+}
+
+// BUTTON EVENT LISTENERS
+let buttons = document.querySelectorAll(".selection");
+
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        let compChoice = getComputerChoice();
+        let result = playGame(button.id, compChoice);
+        document.querySelector(".player-choice").textContent = button.id;
+        document.querySelector(".computer-choice").textContent = compChoice;
+        updateResults(result);
+    })
+})
