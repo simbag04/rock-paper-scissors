@@ -5,27 +5,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <script src="javascript.js" defer></script>
-    <button class="selection" id="rock">Rock</button>
-    <button class="selection" id="paper">Paper</button>
-    <button class="selection" id="scissors">Scissors</button>
+
+    <div class="title">Rock, Paper, Scissors!</div>
+
+    <div class="make-selection">Make a selection!</div>
+    <div class="buttons">
+        <button class="selection" id="rock">Rock</button>
+        <button class="selection" id="paper">Paper</button>
+        <button class="selection" id="scissors">Scissors</button>
+    </div>
+
+    <div class="current-game"></div>
 
     <div class="results">
-        <div>
-            Player Choice:
-            <div class="player-choice"></div>
+        <div class="player person">
+            <div>Player</div>
+            <div class="player-choice choice"></div>
+            <div class="player-score">0</div>
         </div>
-        <div>
-            Computer Choice:
-            <div class="computer-choice"></div>
+        <div class="computer person">
+            <div>Computer</div>
+            <div class="computer-choice choice"></div>
+            <div class="computer-score">0</div>
         </div>
-        
-        <div class="current-game"></div>
+    </div>
+
+    <div class="other">
         <div class="current-results"></div>
         <div class="winner"></div>
     </div>
+
+    <button class="reset">Play Again!</button>
     
 </body>
 </html>

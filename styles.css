@@ -1,0 +1,74 @@
+body
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    background-color: gainsboro;
+    min-height: 100vh;
+}
+
+.make-selection
+{
+    font-size: 32px;
+    padding: 12px;
+}
+.title
+{
+    font-size: 48px;
+    font-weight: bold;
+    padding: 32px;
+}
+
+.buttons
+{
+    display: flex;
+    gap: 8px;
+    padding: 16px;
+}
+.reset, .selection
+{
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 2px;
+    padding: 8px;
+    font-size: 24px;
+}
+
+.current-game
+{
+    font-size: 32px;
+    padding: 16px;
+}
+
+.results
+{
+    display: flex;
+    gap: 16px;
+    font-size: 24px;
+}
+
+.person
+{
+    flex: 1 1 0;
+    width: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+    background-color: white;
+    padding: 30px;
+}
+
+.winner
+{
+    padding: 16px;
+    font-size: 32px;
+}
+
+.reset
+{
+    display: none;
+}

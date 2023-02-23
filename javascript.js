@@ -52,71 +52,75 @@ function playGame(playerChoice, computerChoice)
     }
 }
 
-function game()
-{
-    let playerScore = 0;
-    let computerScore = 0;
-    for (let i = 0; i < 5; i++)
-    {
-        // get user input
-        let input = prompt("Choose rock, paper, or scissors:");
-
-        // get computer choice
-        let computerChoice = getComputerChoice();
-
-        // get game result
-        let result = playGame(input, computerChoice);
-
-        // update scores
-        if (result == "computer") computerScore++;
-        else if (result == "player") playerScore++;
-
-        console.log("Player picked: " + input + "\n");
-        console.log("Computer picked: " + computerChoice + "\n");
-        console.log("Player score: " + playerScore + "\n");
-        console.log("Computer score: " + computerScore + "\n");
-
-
-    }
-
-
-    
-
-}
-
 let playerScore = 0;
 let computerScore = 0;
 
 function updateResults(winner)
 {
+    let object = document.querySelector(".current-results");
+    let output = document.querySelector(".current-game");
     if (winner == 'player')
     {
         playerScore++;
+        output.style.color = 'green';
+        document.querySelector(".player-score").textContent = playerScore;
     }
     else if (winner == 'computer')
     {
         computerScore++;
+        output.style.color = 'red';
+        document.querySelector(".computer-score").textContent = computerScore;
     }
-    document.querySelector(".current-results").textContent = "Computer: " + computerScore + " Player: " + playerScore;
+    else output.style.color = 'black';
+
+    // winner has been found
     if (playerScore == 5)
     {
         document.querySelector(".winner").textContent = "You win!";
+        document.querySelector(".reset").style.display = "block";
     }
     else if (computerScore == 5)
     {
         document.querySelector(".winner").textContent = "You lose!";
+        document.querySelector(".reset").style.display = "block";
     }
 }
+
+
+function reset()
+{
+    playerScore = 0;
+    computerScore = 0;
+    document.querySelector(".current-game").textContent = "";
+    document.querySelector(".current-results").textContent = "";
+    document.querySelector(".winner").textContent = "";
+    document.querySelector(".player-score").textContent = playerScore;
+    document.querySelector(".computer-score").textContent = computerScore;
+    let choices = document.querySelectorAll(".choice");
+    choices.forEach((choice) => {
+        choice.textContent = "";
+    })
+    document.querySelector(".reset").style.display = 'none';
+}
+
+let resetButton = document.querySelector(".reset");
+resetButton.addEventListener('click', () => {
+    reset();
+})
+
 
 // BUTTON EVENT LISTENERS
 let buttons = document.querySelectorAll(".selection");
 
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
-        let compChoice = getComputerChoice();
-        let result = playGame(button.id, compChoice);
-        document.querySelector(".player-choice").textContent = button.id;
-        document.querySelector(".computer-choice").textContent = compChoice;
-        updateResults(result);
+        if (playerScore < 5 && computerScore < 5)
+        {
+            let compChoice = getComputerChoice();
+            let result = playGame(button.id, compChoice);
+            document.querySelector(".player-choice").textContent = button.id.toUpperCase();
+            document.querySelector(".computer-choice").textContent = compChoice.toUpperCase();
+            updateResults(result);
+        }
     })
 })
